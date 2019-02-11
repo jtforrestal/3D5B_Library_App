@@ -1,5 +1,6 @@
 package com.example.library_application.Model;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -9,19 +10,14 @@ public class Book implements Serializable {
 
     private String title;
     private String description;
-    private String editors;
-    private String author;
+    private String[] editors;
+    private String[] authors;
     private String publisher;
-    private int id;
-    private String isbn;
+    private String id;
 
-    public String getIsbn() {
-        return isbn;
-    }
 
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
-    }
+    private String[] images;
+
 
     public String getPages() {
         return pages;
@@ -34,37 +30,54 @@ public class Book implements Serializable {
     private String pages;
 
 
-    public Book(){
+    public Book() {
 
     }
 
-    public static Book fromJSONObject(JSONObject json)
-    {
+    public Book(int id, String title, String[] authors, String description, String[] editors) {
+        this.title = title;
+        this.authors = authors;
+        this.description = description;
+        this.editors = editors;
+    }
+
+    public static Book fromJSONObject(JSONObject json) {
         Book book = new Book();
         try {
-            book.setTitle(json.getString("title"));
-        } catch (JSONException ex) {}
+            book.title = json.getString("title");
+        } catch (JSONException ex) {
+        }
 
         try {
-        book.setId(json.getInt("id"));
-        } catch (JSONException ex) {}
+            book.id = json.getString("id");
+        } catch (JSONException ex) {
+        }
 
-        try{
-            book.setEditors(json.getString("editors"));
-        }catch (JSONException ex) {}
+        try {
+            book.editors = loadStringArray(json.getJSONArray("editors"));
+        } catch (JSONException ex) {
+        }
 
-        try{
-            book.setDescription(json.getString("description"));
-        }catch (JSONException ex) {}
+        try {
+            book.description = json.getString("description");
+        } catch (JSONException ex) {
+        }
 
-        try{
-            book.setPublisher(json.getString("publisher"));
-        }catch (JSONException ex) {}
+        try {
+            book.publisher = json.getString("publisher");
+        } catch (JSONException ex) {
+        }
 
-        try{
-            book.setAuthor(json.getString("author"));
-        }catch (JSONException ex) {}
+        try {
+            book.authors = loadStringArray(json.getJSONArray("authors"));
+        } catch (JSONException ex) {
+        }
 
+
+        try {
+            book.images = loadStringArray(json.getJSONArray("images"));
+        } catch (JSONException ex) {
+        }
 
         return book;
     }
@@ -82,48 +95,55 @@ public class Book implements Serializable {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
 
     public String getEditors() {
-        return editors;
+        return editors.length > 0 ? editors[0] : null;
+
     }
 
-    public void setEditors(String editors) {
-        this.editors = editors;
+
+    public String getAuthors() {
+        return authors.length > 0 ? authors[0] : null;
     }
 
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
 
     public String getPublisher() {
         return publisher;
     }
 
-    public void setPublisher(String publisher) {
-        this.publisher = publisher;
+
+    public String[] getImages(String[] images) {
+        return images;
     }
 
-    public int getId() {
+
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     @Override
     public String toString() //reference or put in memory?
     {
-        return "[" + this.getIsbn() + "] \n" + this.getTitle() + " by " + this.getAuthor() + "\n > " + this.getDescription()+"\n" +this.getPages();
+        return "[" + this.getTitle() + " by " + this.getAuthors() + "\n > " + this.getDescription() + "\n";
     }
 
+    private static String[] loadStringArray(JSONArray array) {
+
+        String[] stringArray = new String[array.length()];
+        try {
+
+            for (int i = 0; i <= array.length(); i++) {
+                stringArray[i] = array.getString(i);
+            }
+
+
+        } catch (JSONException ex) {
+        }
+        ;
+
+        return stringArray;
+    }
 }
 
 
