@@ -4,7 +4,7 @@ import com.example.library_application.Model.Book;
 
 public class StaticBookRepository extends BookRepository {
     @Override
-    public Book[] getBooks() {
+    protected Book[] getBooksInternal() {
         Book exampleBook = new Book();
         exampleBook.setId(123);
         exampleBook.setTitle("Example Book");

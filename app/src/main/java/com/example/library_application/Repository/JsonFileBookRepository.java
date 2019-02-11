@@ -21,7 +21,7 @@ public class JsonFileBookRepository extends BookRepository {
     private final int resourceId;
 
     @Override
-    public Book[] getBooks() {
+    protected Book[] getBooksInternal() {
         InputStream fileStream = this.activity.getResources().openRawResource(this.resourceId);
         try {
             JSONArray bookArray = new JSONArray(IOUtil.toString(fileStream));
