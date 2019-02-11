@@ -8,7 +8,19 @@ import java.util.LinkedList;
 import java.util.List;
 
 public abstract class BookRepository {
-    public abstract Book[] getBooks();
+    public Book[] findBooksByTitle(String name) {
+        Book[] books = this.getBooksInternal();
+
+        List<Book> foundBooks = new LinkedList<Book>();
+
+        for (Book book : books) {
+            if (book.getTitle().contains(name)) {
+                ((LinkedList<Book>) foundBooks).addFirst(book);
+            }
+        }
+
+        return sortBooks((Book[])foundBooks.toArray(), new sortByTitleComparator());
+    }
 
     public Book[] getBooks() {
         Book[] books = this.getBooksInternal();
