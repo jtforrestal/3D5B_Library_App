@@ -19,15 +19,7 @@ public class Book implements Serializable {
     private String[] images;
 
 
-    public String getPages() {
-        return pages;
-    }
 
-    public void setPages(String pages) {
-        this.pages = pages;
-    }
-
-    private String pages;
 
 
     public Book() {
@@ -56,6 +48,7 @@ public class Book implements Serializable {
         try {
             book.editors = loadStringArray(json.getJSONArray("editors"));
         } catch (JSONException ex) {
+            book.authors = new String[0];
         }
 
         try {
@@ -71,12 +64,14 @@ public class Book implements Serializable {
         try {
             book.authors = loadStringArray(json.getJSONArray("authors"));
         } catch (JSONException ex) {
+            book.authors = new String[0];
         }
 
 
         try {
             book.images = loadStringArray(json.getJSONArray("images"));
         } catch (JSONException ex) {
+            book.authors = new String[0];
         }
 
         return book;
@@ -112,7 +107,7 @@ public class Book implements Serializable {
     }
 
 
-    public String[] getImages(String[] images) {
+    public String[] getImages() {
         return images;
     }
 
