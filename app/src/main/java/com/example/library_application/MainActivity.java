@@ -1,5 +1,6 @@
 package com.example.library_application;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -17,6 +18,7 @@ import com.example.library_application.Model.Book;
 import com.example.library_application.Repository.BookRepository;
 import com.example.library_application.Repository.JsonFileBookRepository;
 import com.example.library_application.Utils.Prefs;
+import com.example.library_application.Utils.searchActivity;
 
 import java.util.ArrayList;
 
@@ -26,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private BookRecyclerViewAdapter bookRecyclerViewAdapter;
     Book[] books = new Book[0];
+    private FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,9 +47,8 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-
+                Intent searchInent = new Intent(MainActivity.this, searchActivity.class);
+                startActivity(searchInent);
                 Prefs prefs = new Prefs(MainActivity.this);
                 String search = prefs.getSearch();
 
