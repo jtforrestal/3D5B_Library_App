@@ -1,4 +1,4 @@
-package com.example.library_application;
+package com.example.library_application.Utils;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,7 +8,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class searchActivity extends MainActivity {
+import com.example.library_application.R;
+
+public class searchActivity extends com.example.library_application.MainActivity {
 
     //private static final String TAG = MainActivity.class.getSimpleName();
     //private EditText mBookInput;
