@@ -1,0 +1,98 @@
+[
+  {
+    "id": "ebooks/18823",
+    "title": "Modern Eloquence: Vol II, After-Dinner Speeches E-O",
+    "publisher": "Project Gutenberg",
+    "authors": [],
+    "editors": [
+      "Reed, Thomas B. (Thomas Brackett)"
+    ],
+    "images": []
+  },
+  {
+    "id": "ebooks/18822",
+    "title": "The House of Martha",
+    "publisher": "Project Gutenberg",
+    "authors": [
+      "Stockton, Frank Richard"
+    ],
+    "editors": [],
+    "images": [
+      "http://www.gutenberg.org/cache/epub/18822/pg18822.cover.medium.jpg",
+      "http://www.gutenberg.org/cache/epub/18822/pg18822.cover.small.jpg"
+    ]
+  },
+  {
+    "id": "ebooks/18824",
+    "title": "Fairies and Folk of Ireland",
+    "publisher": "Project Gutenberg",
+    "authors": [
+      "Frost, William Henry"
+    ],
+    "editors": [],
+    "images": []
+  },
+  {
+    "id": "ebooks/18825",
+    "title": "Quentin Durward",
+    "publisher": "Project Gutenberg",
+    "authors": [
+      "Scott, Walter"
+    ],
+    "editors": [],
+    "images": []
+  },
+  {
+    "id": "ebooks/18826",
+    "title": "La San-Felice, Tome 06",
+    "publisher": "Project Gutenberg",
+    "authors": [
+      "Dumas, Alexandre"
+    ],
+    "editors": [],
+    "images": [
+      "http://www.gutenberg.org/cache/epub/18826/pg18826.cover.medium.jpg",
+      "http://www.gutenberg.org/cache/epub/18826/pg18826.cover.small.jpg"
+    ]
+  },
+  {
+    "id": "ebooks/18829",
+    "title": "Winner Take All",
+    "publisher": "Project Gutenberg",
+    "authors": [
+      "Evans, Larry"
+    ],
+    "editors": [],
+    "images": []
+  },
+  {
+    "id": "ebooks/18827",
+    "title": "The Poetical Works of Edward Young, Volume 2",
+    "publisher": "Project Gutenberg",
+    "authors": [
+      "Young, Edward"
+    ],
+    "editors": [],
+    "images": []
+  },
+  {
+    "id": "ebooks/1883",
+    "title": "The Wife, and Other Stories",
+    "publisher": "Project Gutenberg",
+    "authors": [
+      "Chekhov, Anton Pavlovich"
+    ],
+    "editors": [],
+    "images": []
+  },
+  {
+    "id": "ebooks/18828",
+    "title": "Selections From the Writings of the Báb",
+    "publisher": "Project Gutenberg",
+    "authors": [
+      "Bab, `Ali Muhammad Shirazi"
+    ],
+    "editors": [],
+    "images": []
+  }
+]

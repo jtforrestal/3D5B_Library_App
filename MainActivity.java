@@ -3,27 +3,31 @@ package com.example.library_application;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-
-import com.example.library_application.Controls.BookClickListener;
+import android.app.Activity;
 import com.example.library_application.Controls.BookRecyclerViewAdapter;
 import com.example.library_application.Model.Book;
 import com.example.library_application.Repository.BookRepository;
 import com.example.library_application.Repository.JsonFileBookRepository;
 import com.example.library_application.Utils.Prefs;
-import com.example.library_application.Utils.searchActivity;
 
-public class MainActivity extends AppCompatActivity implements BookClickListener {
+import java.util.ArrayList;
 
+public class MainActivity extends AppCompatActivity {
 
-    public RecyclerView recyclerView;
+    private RecyclerView recyclerView;
+    private BookRecyclerViewAdapter bookRecyclerViewAdapter;
     Book[] books = new Book[0];
     private FloatingActionButton fab;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +39,8 @@ public class MainActivity extends AppCompatActivity implements BookClickListener
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        BookRecyclerViewAdapter bookAdapter = new BookRecyclerViewAdapter(this,new Book[0]);
-        recyclerView.setAdapter(bookAdapter);
-        bookAdapter.setBookClickListener(this);
+        BookRecyclerViewAdapter bookList = new BookRecyclerViewAdapter(this, new Book[0]);
+        recyclerView.setAdapter(bookList);
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -45,34 +48,25 @@ public class MainActivity extends AppCompatActivity implements BookClickListener
             public void onClick(View view) {
                 Intent searchIntent = new Intent(MainActivity.this, searchActivity.class);
                 startActivity(searchIntent);
-                Prefs prefs = new Prefs(MainActivity.this);
-                String search = prefs.getSearch();
 
             }
         });
 
 
         try {
-            BookRepository repo =  new JsonFileBookRepository(this, R.raw.testfile);//new StaticBookRepository
-            bookAdapter.bookList = repo.getBooks();
+            BookRepository repo =  new JsonFileBookRepository(this, R.raw.jsonfile);//new StaticBookRepository
+            bookList.bookList = repo.getBooks();
 
+//            for(int i=0;i<books.length;i++)
+//            {
+//                Log.d("Book", books[i].toString());
+//            }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    @Override
-    public void onClick(View view, int position){
-        BookRecyclerViewAdapter adapter = (BookRecyclerViewAdapter) recyclerView.getAdapter();
-        final Book chosen_book = adapter.bookList[position];
-        Intent intent = new Intent(this, FullViewActivity.class);
 
-        intent.putExtra("TITLE", chosen_book.getTitle());
-        intent.putExtra("AUTHOR", chosen_book.getAuthors());
-        intent.putExtra("DESCRIPTION",chosen_book.getDescription());
-        intent.putExtra("IMAGES", chosen_book.getImages());
-        startActivity(intent);
-    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -94,4 +88,5 @@ public class MainActivity extends AppCompatActivity implements BookClickListener
 
         return super.onOptionsItemSelected(item);
     }
+
 }
