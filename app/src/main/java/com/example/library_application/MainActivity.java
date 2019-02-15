@@ -21,7 +21,7 @@ import com.example.library_application.Utils.searchActivity;
 public class MainActivity extends AppCompatActivity implements BookClickListener {
 
 
-    private RecyclerView recyclerView;
+    public RecyclerView recyclerView;
     Book[] books = new Book[0];
     private FloatingActionButton fab;
 
@@ -63,13 +63,14 @@ public class MainActivity extends AppCompatActivity implements BookClickListener
 
     @Override
     public void onClick(View view, int position){
-        final Book chosen_book = new Book();
+        BookRecyclerViewAdapter adapter = (BookRecyclerViewAdapter) recyclerView.getAdapter();
+        final Book chosen_book = adapter.bookList[position];
         Intent intent = new Intent(this, FullViewActivity.class);
 
-        //intent.putExtra("TITLE", chosen_book.getTitle());
-        //intent.putExtra("AUTHOR", chosen_book.getAuthors());
-        //intent.putExtra("DESCRIPTION",chosen_book.getDescription());
-        //intent.putExtra("IMAGE", chosen_book.getImages());
+        intent.putExtra("TITLE", chosen_book.getTitle());
+        intent.putExtra("AUTHOR", chosen_book.getAuthors());
+        intent.putExtra("DESCRIPTION",chosen_book.getDescription());
+        intent.putExtra("IMAGES", chosen_book.getImages());
         startActivity(intent);
     }
     @Override

@@ -94,11 +94,6 @@ public class BookRecyclerViewAdapter extends RecyclerView.Adapter<BookRecyclerVi
             public void onClick(View v) {
                 if(bookClickListener != null) bookClickListener.onClick(v, getAdapterPosition());
 
-                //view.putExtra("TITLE", chosen_book.getTitle());
-                //view.putExtra("AUTHOR", chosen_book.getAuthors());
-                //view.putExtra("DESCRIPTION",chosen_book.getDescription());
-                //view.putExtra("IMAGE", chosen_book.getImages());
-                //kerntext.startActivity(full_view);
             }
         }
     }

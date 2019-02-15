@@ -71,7 +71,7 @@ public class Book implements Serializable {
         try {
             book.images = loadStringArray(json.getJSONArray("images"));
         } catch (JSONException ex) {
-            book.authors = new String[0];
+            book.images = new String[0];
         }
 
         return book;

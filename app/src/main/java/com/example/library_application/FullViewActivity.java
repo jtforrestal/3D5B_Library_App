@@ -17,31 +17,31 @@ public class FullViewActivity extends AppCompatActivity {
         setContentView(R.layout.book_full_page);
 
         Intent intent = getIntent();
-        //String title = intent.getStringExtra("TITLE");
-        //String authors = intent.getStringExtra("AUTHOR");
-        //String description = intent.getStringExtra("DESCRIPTION");
-        //String images = intent.getStringExtra("IMAGE");
+        String title = intent.getStringExtra("TITLE");
+        String authors = intent.getStringExtra("AUTHOR");
+        String[] images = intent.getStringArrayExtra("IMAGES");
+        String description = intent.getStringExtra("DESCRIPTION");
 
-        //TextView titleView = findViewById(R.id.bookTitleID);
-        //TextView authorView = findViewById(R.id.bookAuthorID);
-        //TextView descriptionView = findViewById(R.id.bookDescriptionID);
-        //ImageView coverView = findViewById(R.id.bookImageID);
 
-        //titleView.setText(title);
-        //authorView.setText(authors);
-        //descriptionView.setText(description);
+        TextView titleView = findViewById(R.id.bookTitleID);
+        TextView authorView = findViewById(R.id.bookAuthorID);
+        TextView descriptionView = findViewById(R.id.bookDescriptionID);
+        ImageView coverView = findViewById(R.id.bookImageID);
 
-        //if (images.length() > 0) {
-         //   Picasso.get()
-           //         .load(images)
-             //       .resize(100,120).centerCrop()
-               //     .placeholder(android.R.drawable.ic_menu_slideshow)
-                 //   .into(coverView);
-        //}
-        //else
-        //{
-        //    Picasso.get().load(android.R.drawable.ic_menu_slideshow).into(coverView);
-        //}
+        titleView.setText(title);
+        authorView.setText(authors);
+        descriptionView.setText(description);
+
+        if ( images.length >0 ) {
+           Picasso.get()
+                    .load(images[0])
+                    .resize(100,120).centerCrop()
+                    .placeholder(android.R.drawable.ic_menu_slideshow)
+                    .into(coverView);
+        }
+        else{
+            Picasso.get().load(android.R.drawable.ic_menu_slideshow).into(coverView);
+        }
 
     }
 

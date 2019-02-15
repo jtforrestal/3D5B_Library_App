@@ -8,33 +8,33 @@
 
     <ImageView
         android:id="@+id/bookImageID"
-        android:layout_width="185dp"
-        android:layout_height="253dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
         android:layout_marginTop="24dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/bookTitle"
+        android:id="@+id/bookTitleID"
         android:layout_width="175dp"
-        android:layout_height="48dp"
+        android:layout_height="100dp"
         android:layout_marginStart="12dp"
         android:layout_marginLeft="12dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:text="Title"
-        android:textSize="30sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/bookImageID"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/bookAuthor"
+        android:id="@+id/bookAuthorID"
         android:layout_width="175dp"
         android:layout_height="136dp"
         android:layout_marginStart="12dp"
@@ -43,23 +43,24 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:text="Author"
-        android:textSize="24sp"
+        android:textSize="14sp"
         android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/bookImageID"
-        app:layout_constraintTop_toBottomOf="@+id/bookTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/bookTitleID" />
 
     <TextView
-        android:id="@+id/bookDesc"
+        android:id="@+id/bookDescriptionID"
         android:layout_width="345dp"
         android:layout_height="352dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
         android:layout_marginTop="12dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginRight="12dp"
         android:layout_marginBottom="16dp"
         android:text="Description of the Book"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
