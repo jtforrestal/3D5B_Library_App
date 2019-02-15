@@ -98,7 +98,7 @@ public class Book implements Serializable {
 
 
     public String getAuthors() {
-        return authors.length > 0 ? authors[0] : null;
+        return authors.length > 0 ? authors[0] : "Author";
     }
 
 

@@ -1,31 +1,31 @@
 package com.example.library_application.Controls;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.example.library_application.FullViewActivity;
 import com.example.library_application.Model.Book;
 import com.example.library_application.R;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
-import java.util.List;
 
-
-
-    public class BookRecyclerViewAdapter extends RecyclerView.Adapter<BookRecyclerViewAdapter.ViewHolder>{
+public class BookRecyclerViewAdapter extends RecyclerView.Adapter<BookRecyclerViewAdapter.ViewHolder>{
 
         public Context context;
+
         public Book[] bookList;
+        private BookClickListener bookClickListener;
 
         public BookRecyclerViewAdapter(Context context, Book[] books) {
             this.context = context;
-            bookList= books;
+            this.bookList= books;
+
         }
 
         @Override
@@ -39,6 +39,7 @@ import java.util.List;
         @Override
         public void onBindViewHolder(ViewHolder holder, int position)
         {
+
             Book book = bookList[position];
             holder.title.setText(book.getTitle());
             holder.author.setText(book.getAuthors());
@@ -64,7 +65,13 @@ import java.util.List;
         public int getItemCount(){
             return bookList.length;
         }
-        public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+
+        public void setBookClickListener(BookClickListener listener){
+            this.bookClickListener = listener;
+        }
+
+        public class ViewHolder extends RecyclerView.ViewHolder
+                implements View.OnClickListener{
             TextView title;
             ImageView cover;
             TextView  description;
@@ -80,21 +87,18 @@ import java.util.List;
                 cover = (ImageView)itemView.findViewById(R.id.bookImageID);
                 author = (TextView)itemView.findViewById(R.id.bookAuthorID);
                 description= (TextView)itemView.findViewById(R.id.bookDescriptionID);
-
-
-                itemView.setOnClickListener(new View.OnClickListener(){
-                    @
-                            Override
-                    public void onClick(View v){
-
-                        Toast.makeText(context, "Row Tapped", Toast.LENGTH_LONG);
-                    }
-                });
+                itemView.setOnClickListener(this);
             }
 
             @Override
             public void onClick(View v) {
+                if(bookClickListener != null) bookClickListener.onClick(v, getAdapterPosition());
 
+                //view.putExtra("TITLE", chosen_book.getTitle());
+                //view.putExtra("AUTHOR", chosen_book.getAuthors());
+                //view.putExtra("DESCRIPTION",chosen_book.getDescription());
+                //view.putExtra("IMAGE", chosen_book.getImages());
+                //kerntext.startActivity(full_view);
             }
         }
     }

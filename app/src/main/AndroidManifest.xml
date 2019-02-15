@@ -21,6 +21,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".Utils.searchActivity"></activity>
+        <activity android:name=".FullViewActivity"
+            android:label="@string/title_full_view_activity"
+            android:parentActivityName=".MainActivity">
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"/>
+        </activity>
     </application>
 
 </manifest>
